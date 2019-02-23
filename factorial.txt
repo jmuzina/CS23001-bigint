@@ -1,0 +1,27 @@
+My factorial implementation works using a for loop. For every iteration of the loop, a 
+bigint called fact is multiplied by int i (initialized at 1). The loop runs until 
+i == *this, or, in other words, for a calculation of n!, the loop multiplies fact by
+i n times. 
+
+bigint::trailingZeroes() const calculates the number of trailing zeroes on a bigint by 
+simply iterating over a bigint array until digits[i] != 0. The value of tracker variable
+index at this point is the number of trailing zeroes. Since the bigint data structure stores
+the end of numbers at the beginning of the array, iterating forwards from the start of the
+array is the same as searching backwards from the end of the number, counting the number
+of zeroes until we come upon a different number.
+
+An alternate way of calculating the number of trailing zeroes on a number (that is
+difficult to implement in bigint unless a few more overloads are added) is to count the number
+of 5's in the prime factorization of a number. This method effectively counts the number
+of times a number is multiplied by 10 (because if 10 goes into a number, 5 also must go into
+it by multipying by 2). 
+
+100! = 9332621544394415268169923885626670049071596826438162146859296389521759999322
+9915608941463976156518286253697920827223758251185210916864000000000000000000000000
+
+The prime factorization of 100! is:
+2^99 * 3^48 * 5^24 * 7^16 * 11^9 * 13^7 * 17^5 * 19^5 * 23^4 * 29^3 * 31^3 * 37^2 * 41^2
+* 43^2 * 47^2 * 53 * 59 * 61 * 67 *71 * 73 * 79 * 83 * 89 * 97
+
+Since there are 24 5's in the prime factorization of 100!, there are 24 multiplications by 10
+in the calculation of 100!, and thus there are 24 trailing zeroes in 100!.
